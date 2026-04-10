@@ -1,13 +1,17 @@
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { AboutModal } from '../components/AboutModal';
 import { Home, Phone, Info, Users, LogOut, AlertTriangle, Eye, ArrowRight, ShieldAlert, Activity, ScanLine } from 'lucide-react';
 import { TrailingCursor } from '../components/TrailingCursor';
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const [showAbout, setShowAbout] = useState(false);
 
   return (
     <div className="min-h-screen w-screen bg-[#02050A] text-slate-100 flex flex-col font-sans overflow-hidden cursor-crosshair">
+      <AboutModal isOpen={showAbout} onClose={() => setShowAbout(false)} />
       <TrailingCursor />
       
       {/* Top Navbar */}
@@ -26,7 +30,10 @@ export default function Dashboard() {
             <span className="font-bold uppercase tracking-wider text-xs">Home</span>
           </button>
           <div className="w-px h-4 bg-slate-800"></div>
-          <button className="flex items-center gap-2 text-slate-400 hover:text-white hover:bg-slate-800 px-3 py-1.5 rounded-lg transition-all duration-300">
+          <button 
+            onClick={() => setShowAbout(true)}
+            className="flex items-center gap-2 text-slate-400 hover:text-white hover:bg-slate-800 px-3 py-1.5 rounded-lg transition-all duration-300"
+          >
             <Info className="w-4 h-4" />
             <span className="font-bold uppercase tracking-wider text-xs">About</span>
           </button>
