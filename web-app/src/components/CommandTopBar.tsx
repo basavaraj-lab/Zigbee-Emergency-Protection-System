@@ -1,4 +1,5 @@
-import { ShieldAlert, Bell, Search, RefreshCw, Globe, ArrowDownToLine, Menu, Activity } from "lucide-react";
+import { ShieldAlert, Bell, Search, RefreshCw, Globe, ArrowDownToLine, Menu, Activity, ChevronLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import type { NodeData } from '../data/mockData';
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export function CommandTopBar({ nodes, onRefresh, onCenterMap, onToggleProtocolPanel }: Props) {
+  const navigate = useNavigate();
   const activeIncidents = nodes.filter(n => n.status !== 'RESOLVED').length;
   const onlineCount = nodes.filter(n => new Date().getTime() - new Date(n.last_heartbeat).getTime() < 600000).length;
 
@@ -17,7 +19,10 @@ export function CommandTopBar({ nodes, onRefresh, onCenterMap, onToggleProtocolP
       {/* Brand */}
       <div className="flex items-center gap-3">
         <Menu className="w-6 h-6 text-slate-400 lg:hidden" />
-        <div className="flex items-center gap-2 bg-slate-950 p-2 rounded-lg border border-slate-800 animate-pulse">
+        <button onClick={() => navigate('/dashboard')} className="p-1 text-slate-400 hover:text-white transition-colors">
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <div className="flex items-center gap-2 bg-slate-950 p-2 rounded-lg border border-slate-800 animate-pulse cursor-pointer" onClick={() => navigate('/dashboard')}>
           <ShieldAlert className="w-5 h-5 text-blue-500" />
           <span className="font-bold text-slate-50 tracking-wider">SENTINEL COMMAND</span>
         </div>

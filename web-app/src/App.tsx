@@ -3,6 +3,7 @@ import Splash from './pages/Splash';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import AlertsDashboard from './pages/AlertsDashboard';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const isAuthenticated = localStorage.getItem('sentinel_auth') === 'true';
@@ -22,6 +23,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/alerts" 
+            element={
+              <ProtectedRoute>
+                <AlertsDashboard />
               </ProtectedRoute>
             } 
           />
