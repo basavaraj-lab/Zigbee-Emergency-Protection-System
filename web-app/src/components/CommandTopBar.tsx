@@ -1,4 +1,4 @@
-import { ShieldAlert, Bell, Search, RefreshCw, Globe, ArrowDownToLine, Menu, Activity, ChevronLeft } from "lucide-react";
+import { ShieldAlert, Bell, Search, RefreshCw, Globe, Menu, Activity, ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import type { NodeData } from '../data/mockData';
 
