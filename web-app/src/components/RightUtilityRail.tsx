@@ -6,6 +6,7 @@ export function RightUtilityRail({ nodes }: { nodes: NodeData[] }) {
   const fireC = nodes.filter(n => n.alert_type === 'FIRE').length;
   const gasC = nodes.filter(n => n.alert_type === 'GAS').length;
   const medC = nodes.filter(n => n.alert_type === 'MEDICAL').length;
+  const robC = nodes.filter(n => n.alert_type === 'ROBBERY').length;
   
   return (
     <div className="absolute right-4 top-4 z-40 flex flex-col gap-3 pointer-events-none drop-shadow-2xl">
@@ -38,6 +39,14 @@ export function RightUtilityRail({ nodes }: { nodes: NodeData[] }) {
           </div>
           <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden">
             <div className="bg-cyan-500 h-full" style={{ width: `${(medC / nodes.length) * 100}%` }}></div>
+          </div>
+
+          <div className="flex justify-between items-center text-xs">
+            <span className="font-bold text-fuchsia-400">ROBBERY</span>
+            <span className="font-mono text-slate-300">{robC} active</span>
+          </div>
+          <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden">
+            <div className="bg-fuchsia-500 h-full animate-pulse" style={{ width: `${(robC / nodes.length) * 100}%` }}></div>
           </div>
         </div>
       </motion.div>

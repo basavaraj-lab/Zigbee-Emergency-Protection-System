@@ -51,36 +51,62 @@ export function AboutModal({ isOpen, onClose }: Props) {
                     About SentinelMesh
                     <span className="px-2 py-0.5 text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded">ACTIVE</span>
                   </h2>
+                  <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-4">
+                    SentinelMesh is a high-reliability automated emergency response and incident escalation platform designed for hospitals, laboratories, factories, and other safety-critical facilities. It transforms passive surveillance infrastructure into an active safety and security network.
+                  </p>
                   <p className="text-slate-400 text-sm md:text-base leading-relaxed">
-                    SentinelMesh is an intelligent, decentralized emergency communication system designed to ensure fast, reliable, and internet-independent alert transmission during critical situations such as medical emergencies, fire hazards, and security threats.
+                    By combining computer vision, secure cloud authentication, geospatial alert routing, and real-time incident delivery, the platform minimizes the risk of delayed human intervention, reducing Emergency Response Time (ERT) during fire, medical, and security emergencies.
                   </p>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 transition-colors group">
+                <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 transition-colors group pl-5 col-span-1 md:col-span-2">
                   <Cpu className="w-6 h-6 text-indigo-400 mb-3 group-hover:-translate-y-1 transition-transform" />
-                  <h3 className="font-bold text-slate-200 mb-2 uppercase tracking-wider text-xs">Self-Healing Mesh</h3>
+                  <h3 className="font-bold text-slate-200 mb-2 uppercase tracking-wider text-xs">AI & Computer Vision Pipeline</h3>
+                  <p className="text-sm text-slate-500 mb-2">
+                    A multi-stage OpenCV and deep learning pipeline for real-time visual event detection without cloud dependency.
+                  </p>
+                  <ul className="list-disc pl-5 text-sm text-slate-500 space-y-1">
+                    <li><strong className="text-slate-300">Fire Detection:</strong> HSV-based flame segmentation, contour dynamics, and flicker analysis to distinguish true fire.</li>
+                    <li><strong className="text-slate-300">Human Analytics:</strong> Person detection and centroid-based multi-object tracking to monitor occupancy and presence.</li>
+                    <li><strong className="text-slate-300">Posture Analysis:</strong> Skeletal keypoints and geometry analysis to detect falls and medical distress.</li>
+                    <li><strong className="text-slate-300">Security & Intrusion:</strong> Person detection in restricted zones and abnormal movement patterns for robbery detection.</li>
+                  </ul>
+                </div>
+
+                <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 transition-colors group">
+                  <ShieldAlert className="w-6 h-6 text-emerald-400 mb-3 group-hover:-translate-y-1 transition-transform" />
+                  <h3 className="font-bold text-slate-200 mb-2 uppercase tracking-wider text-xs">Geospatial Alert Routing</h3>
                   <p className="text-sm text-slate-500">
-                    Built using ESP32 and Zigbee, forming a mesh network. Each node acts as both a sender and receiver, enabling distributed communication without centralized infrastructure.
+                    Events contain GPS metadata to dispatch alerts to the nearest responders depending on the incident type: Fire Protocols to fire stations, Health Protocols to hospitals, and Intrusion Protocols to safety teams.
                   </p>
                 </div>
 
+                <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 transition-colors group">
+                  <Shield className="w-6 h-6 text-blue-400 mb-3 group-hover:-translate-y-1 transition-transform" />
+                  <h3 className="font-bold text-slate-200 mb-2 uppercase tracking-wider text-xs">Auth & Role-Based Access</h3>
+                  <p className="text-sm text-slate-500">
+                    Secured by Firebase Identity Platform using TLS/SSL, providing OAuth 2.0 Auth and verifiable Custom Claims to restrict Privileged Escelation, Operator controls, and Admin dashboards.
+                  </p>
+                </div>
+                
                 <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 transition-colors group">
                   <HeartPulse className="w-6 h-6 text-red-400 mb-3 group-hover:-translate-y-1 transition-transform" />
-                  <h3 className="font-bold text-slate-200 mb-2 uppercase tracking-wider text-xs">Emergency Propagation</h3>
+                  <h3 className="font-bold text-slate-200 mb-2 uppercase tracking-wider text-xs">Temporal Decision Engine</h3>
                   <p className="text-sm text-slate-500">
-                    Nodes generate alerts containing type, ID, and priority. This propagates across multiple nodes using multi-hop communication instantly.
+                    Reduces false positives by requiring a rule-based state engine to validate multiple events over time (e.g. checking inactivity duration after a fall event).
+                  </p>
+                </div>
+                
+                <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 transition-colors group">
+                  <Network className="w-6 h-6 text-orange-400 mb-3 group-hover:-translate-y-1 transition-transform" />
+                  <h3 className="font-bold text-slate-200 mb-2 uppercase tracking-wider text-xs">Real-Time Connectivity</h3>
+                  <p className="text-sm text-slate-500">
+                    Low-latency alerts through WebSockets, MQTT, and FCM to notify users with exact camera locations and confidence intervals across Mobile and Web applications.
                   </p>
                 </div>
 
-                <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 transition-colors group pl-5 col-span-1 md:col-span-2">
-                  <Shield className="w-6 h-6 text-emerald-400 mb-3 group-hover:-translate-y-1 transition-transform" />
-                  <h3 className="font-bold text-slate-200 mb-2 uppercase tracking-wider text-xs">Reliability & Edge Processing</h3>
-                  <p className="text-sm text-slate-500">
-                    Incorporates ACK mechanisms—if an acknowledgment fails, the system automatically retransmits via alternate paths. Equipped with local alert systems (OLED, bells), edge processing ensures ultra-low latency without internet connectivity.
-                  </p>
-                </div>
               </div>
 
             </div>

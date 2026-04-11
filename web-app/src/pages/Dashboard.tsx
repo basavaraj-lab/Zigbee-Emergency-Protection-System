@@ -130,7 +130,10 @@ export default function Dashboard() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => console.log('Live CV functionality pending')}
+              onClick={() => {
+                fetch('/api/run-cv').catch(console.error);
+                console.log('Starting Live CV Node...');
+              }}
               className="w-full h-48 rounded-2xl flex items-center p-8 gap-8 border transition-all duration-500 shadow-2xl bg-gradient-to-r from-slate-900/90 to-slate-950/90 border-slate-800 hover:border-blue-500 hover:from-blue-950/40 hover:to-slate-900/90 text-slate-400 hover:text-blue-400 relative overflow-hidden group cursor-pointer backdrop-blur-sm"
             >
               <div className="absolute left-0 top-0 bottom-0 w-2 bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.8)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
